@@ -201,7 +201,22 @@ class Game_com {
         else return false;
     }
     void attack_choice() { //player attack
-        cout << "Your turn!\nWhich spell do you want to use? (1) or (2)?\n";
+        string spellone;
+        string spelltwo;
+        if (player_A.cast == 1) {
+            spellone = "Charge";
+            spelltwo = "Slam";
+
+        }
+        else if (player_A.cast == 2) {
+            spellone = "Arcane shot";
+            spelltwo = "Marked shot";
+        }
+        else if (player_A.cast == 3) {
+            spellone = "Frostbolt";
+            spelltwo = "Fireball";
+        }
+        cout << "Your turn!\nWhich spell do you want to use? (1)", spellone, " or (2)", spelltwo, "?\n";
         cin >> player_A.attack_choice;
         switch (player_A.attack_choice) {
         case 1:
@@ -426,14 +441,25 @@ class Game_vs {
 
     }
 
-    bool random() { //simple randomization
-        if (rand() % 2 == 0)
-            return true;
-        else return false;
-    }
+    
 
     void firstplayer_attack_choice() { //1.player attack
-        cout << player_A.name, "'s turn!\nWhich spell do you want to use? (1) or (2)?\n";
+        string spellone;
+        string spelltwo;
+        if (player_A.cast == 1) {
+            spellone = "Charge";
+            spelltwo = "Slam";
+
+        }
+        else if (player_A.cast == 2) {
+            spellone = "Arcane shot";
+            spelltwo = "Marked shot";
+        }
+        else if (player_A.cast == 3) {
+            spellone = "Frostbolt";
+            spelltwo = "Fireball";
+        }
+        cout << player_A.name, "'s turn!\nWhich spell do you want to use? (1)",spellone," or (2)", spelltwo, "?\n";
         cin >> player_A.attack_choice;
         switch (player_A.attack_choice) {
         case 1:
@@ -461,7 +487,22 @@ class Game_vs {
         }
     }
         void secondplayer_attack_choice() { //2.player attack
-            cout << player_B.name, "'s turn!\nWhich spell do you want to use? (1) or (2)?\n";
+            string spellone;
+            string spelltwo;
+            if (player_A.cast == 1) {
+                spellone = "Charge";
+                spelltwo = "Slam";
+
+            }
+            else if (player_A.cast == 2) {
+                spellone = "Arcane shot";
+                spelltwo = "Marked shot";
+            }
+            else if (player_A.cast == 3) {
+                spellone = "Frostbolt";
+                spelltwo = "Fireball";
+            }
+            cout << player_B.name, "'s turn!\nWhich spell do you want to use? (1)", spellone, " or (2)", spelltwo, "?\n";
             cin >> player_B.attack_choice;
             switch (player_B.attack_choice) {
 
@@ -493,16 +534,35 @@ class Game_vs {
 
 
 
-    
+
 
 };
+
+bool random() { //simple randomization
+    if (rand() % 2 == 0)
+        return true;
+    else return false;
+}
 /// <summary>
 /// HIBA VAN ITT EZT MÉG MEG KELL OLDANI  ILLETVE MÉG A SPELLEK VÁLTOZATOSSÁGÁT KELL CASTONKÉNT ÉS TALÁN ENNYI
 /// </summary>
 
 void vsmenu(){
-    cout << player_A.name, "'s score: ", player_A.points
-        << player_B.name, "'s score: ", player_B.points << endl;
+    cout << player_A.name, "'s score: ";
+    cout << player_A.points << endl;
+    cout << player_B.name, "'s score: "; 
+    cout << player_B.points << endl << endl;
+    cout << "The fight has begin!\n\n";
+    random();
+    if (random == 0) {
+        cout << player_B.name, "'s turn!\n";
+        Game_vs secondplayer_attack_choice();
+    }
+    else {
+        cout << player_A.name, "'s turn!\n";
+        Game_vs firstplayer_attack_choice();
+    }
+    
 
 }
 
@@ -573,6 +633,14 @@ int main()
         }
         system("cls"); // clean
 
+        if (random == 0) {
+            cout << "Enemy's turn!\n";
+            Game_com enemy_attack_choice();
+        }
+        else {
+            cout << "Your turn!\n";
+            Game_com attack_choice();
+        }
     ENEMY: //enemy attack
         Game_com enemy_attack_choice();
         cout << "Your HP: ", player_A.life, " \\ Enemy's HP: ", COM.life; cout << "\n";

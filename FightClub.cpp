@@ -4,12 +4,7 @@
 #include <thread>
 using namespace std;
 
-//class Ability;
 class Fighter;
-//Fighter fight;
-//class Enemy;
-
-
 
 int mode = 0;
 bool quit = false;
@@ -28,22 +23,18 @@ public:
     int cast;
     int life;
     int abilities[2];
-    //Ability* abilities[2];
+    
     int attack_choice;
     bool status;
     int points;
 
-    // milyen tulajdonságai vannak még.
-
-
-    // konstruktor
+    
     Fighter() : cast(0), life(0), attack_choice(0), status(false), points(0) {
         abilities[0] = 0;
         abilities[1] = 0;
     }
 
-    //void decreaseLife(int delta);
-    // ...
+    
 }player_A, COM, player_B;
 
 void playerAfunc() {
@@ -84,8 +75,7 @@ void playerBfunc() {
 
 class Game_com {
 public:
-    //Fighter fight;
-    //Enemy enemy;
+    
     
     void entry() {
         cout << "\nOkay, hold on and defeat your opponent!" << endl; //menu text
@@ -509,9 +499,6 @@ bool random() { //simple randomization
         return true;
     else return false;
 }
-/// <summary>
-/// HIBA VAN ITT EZT MÉG MEG KELL OLDANI  ILLETVE MÉG A SPELLEK VÁLTOZATOSSÁGÁT KELL CASTONKÉNT ÉS TALÁN ENNYI
-/// </summary>
 
 void vsmenu(){
     cout << player_A.name << "'s score: ";
@@ -752,7 +739,7 @@ int main()
         
     }
   
-   
+
 
     return 0;
 }
